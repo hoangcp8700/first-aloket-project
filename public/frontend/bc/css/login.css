@@ -1,0 +1,357 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none!important;
+}
+
+
+/*button { outline:none!important; border-style: none!important; }
+*/
+
+button:hover,
+button:active,
+button:focus {
+    outline: none!important;
+    border-style: none!important;
+    box-shadow: none!important;
+}
+
+
+/*button{
+    padding: 0;
+border: none!important;
+background: none!important;
+}*/
+
+.phone-logo {
+    padding: 70px 0;
+    height: 650px;
+    float: right;
+}
+
+
+/*.clear-mt{
+    margin-top:4em;
+}*/
+
+body {
+    background-color: #fafafa!important;
+    font-size: 14px;
+}
+
+.right-column {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    margin: 6em auto 1em;
+    padding: 3em 3em 1em 3em;
+    min-height: 300px;
+    /* max-height:550px; */
+    max-width: 370px;
+}
+
+.right-column .instagram-logo {
+    width: 50%;
+}
+
+.right-column .btn-google {
+    color: #EA4335!important;
+}
+
+.right-column .btn-google-regis {
+    border: 1px solid red;
+    background: #EA4335;
+    color: #fff!important;
+    margin-top: 2px!important;
+}
+
+.right-column .btn-google-regis .fa-google {
+    background: #fff;
+    color: #EA4335;
+    margin: 0 8px 0;
+}
+
+.right-column a .fa-google {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    background: #EA4335;
+    color: #fff;
+}
+
+.right-column .or {
+    font-size: 13px!important;
+    color: #999;
+    font-weight: 600;
+}
+
+.right-column .or::before {
+    content: '';
+    background: #efefef;
+    display: block;
+    height: 2px;
+    width: 35%;
+    position: relative;
+    top: 11px;
+}
+
+.right-column .or::after {
+    content: '';
+    background: #efefef;
+    display: block;
+    height: 2px;
+    width: 35%;
+    position: relative;
+    bottom: 10px;
+    left: 65%;
+}
+
+.right-column .form-group {
+    margin-bottom: 6px!important;
+}
+
+.right-column .form-control {
+    background: #fafafa!important;
+    border: 1px solid #efefef!important;
+    font-size: 12px!important;
+}
+
+.right-column ::placeholder {
+    color: #999;
+}
+
+.right-column .btn-login {
+    font-size: 14px!important;
+    margin-bottom: 1em!important;
+}
+
+.right-column .btn-google {
+    font-size: 14px!important;
+    width: 100%;
+    /*	margin-top:-15px;*/
+    color: blue;
+}
+
+.right-column-login {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    height: 60px;
+    padding: 20px;
+    margin: 1em auto 0;
+    max-width: 370px;
+}
+
+.right-column-app {
+    padding-top: 1em;
+    margin: 0 auto;
+    max-width: 370px;
+}
+
+.right-column-app .app-logo img {
+    cursor: pointer;
+    width: 150px;
+    height: 60px;
+    margin-top: -1em;
+}
+
+.right-column .info1 {
+    font-weight: 600;
+    line-height: 20px;
+    font-size: 17px;
+    color: #999;
+}
+
+.right-column .info2 {
+    line-height: 18px;
+    font-size: 14px;
+    color: #999;
+}
+
+.right-column .forgot-password {
+    color: #00376b;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.right-column-login .noAccount {
+    font-size: 12px;
+}
+
+.right-column-login .noAccount a {
+    font-weight: 600;
+}
+
+
+/****************************************************************************/
+
+.topbar-profile-photo {
+    width: 1.8em;
+    height: 1.8em;
+    position: relative;
+}
+
+.topbar-profile-photo img {
+    width: 100%;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+}
+
+.link-menu {
+    color: #000;
+}
+
+.story-profile-photo {
+    width: 56px;
+    height: 56px;
+    position: relative;
+    border: 2px solid red;
+}
+
+.story-profile-photo img {
+    width: 100%;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+}
+
+.post-profile-photo {
+    width: 46px;
+    height: 46px;
+    position: relative;
+    border: 2px solid red;
+}
+
+.post-profile-photo img {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    border-radius: 50%;
+}
+
+.info-post .count-comments {
+    font-size: 14px;
+}
+
+.info-post .all-comments p {
+    margin-bottom: 0px;
+}
+
+.info-post .all-comments b {
+    padding-right: 5px;
+}
+
+.comment-box {
+    border-top: 1px solid #dee2e6!important;
+}
+
+.btn-ig {
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: transparent;
+    border: 0;
+    color: #0095f6;
+    font-size: 14px;
+}
+
+.btn-ig:hover,
+.btn-ig:focus {
+    background-color: transparent!important;
+    color: #0095f6!important;
+}
+
+.sidenav-profile-photo {
+    width: 56px;
+    height: 56px;
+    position: relative;
+    border: 2px solid red;
+}
+
+.sidenav-profile-photo img {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    border-radius: 50%;
+}
+
+.profile-info-username {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.profile-info-name {
+    font-size: 14px;
+    color: #999;
+    font-weight: 700;
+}
+
+.suggest-profile-photo {
+    width: 46px;
+    height: 46px;
+    position: relative;
+    border: 2px solid red;
+    border: 2px solid red!important;
+}
+
+.suggest-profile-photo img {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    border-radius: 50%;
+}
+
+.sugest-username {
+    color: #000;
+}
+
+.suggest .s1 {
+    font-weight: 600;
+    color: #999;
+    font-size: 14px
+}
+
+.suggest a {
+    color: #000;
+    font-weight: 700;
+}
+
+.suggest-username {
+    display: block;
+    color: #000;
+}
+
+.suggest-name {
+    color: #999;
+}
+
+.footer {
+    margin-top: 1em;
+}
+
+.footer a,
+p {
+    margin-left: 5px;
+    font-size: 12px;
+    color: #999;
+}
+
+.right-fixed {
+    position: fixed;
+    right: 10;
+    top: 7em;
+}
+
+
+/*.top-fixed{
+	position: fixed;
+	top:0;
+}*/
+
+.newfeed {
+    margin-top: 7em;
+}
