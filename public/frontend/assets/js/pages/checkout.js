@@ -87,6 +87,7 @@ $('#applyCoupon').on("submit", function(e) {
 })
 
 $('#checkoutForm').on('submit', function(e) {
+    document.querySelector('#loader').style.display = 'block';
     e.preventDefault();
     var data = $(this).serialize();
     $.ajax({
@@ -94,15 +95,23 @@ $('#checkoutForm').on('submit', function(e) {
         url: '/thanh-toan',
         data: data,
         success: function(data) {
-
+            document.querySelector('#loader').style.display = 'none';
             if (data.statuscode == 'success') {
                 swal({
                     icon: data.statuscode,
-                    title: data.status
-                });
-                setTimeout(function() {
-                    window.location.href = 'http://aloket.com/';
-                }, 5000);
+                    title: data.status,
+                    buttons: 'Xác nhận',
+                }).then((value) => {
+                    console.log(value);
+                    swal({
+                        icon: data.statuscode,
+                        title: 'Xác nhận thành công',
+                        buttons: 'Ok',
+                    });
+                    setTimeout(function() {
+                        window.location.href = 'http://aloket.com/';
+                    }, 1000);
+                });;
             } else {
                 swal({
                     icon: data.statuscode,

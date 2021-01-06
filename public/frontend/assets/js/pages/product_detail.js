@@ -23,14 +23,14 @@ $('#addTocartForm').on('submit', function(e) {
             });
 
             if (data.statuscode == 'success') {
+                document.querySelector('#cartLoadHeader p').style.display = 'none';
+
                 var cart = data.cart[data.cart.length - 1];
                 document.querySelector('#countCart').innerHTML = data.cart.length;
                 window.addEventListener('load', loadCart(cart['id'], cart['product']['name'], cart['product']['color'], cart['size'], cart['price'], cart['quantity'], cart['product']['image']));
 
             }
-            if (data.cart.length > 0) {
-                document.querySelector('#cartLoadHeader p ').innerHTML = '';
-            }
+
         },
         error: function() {
             alert('error');

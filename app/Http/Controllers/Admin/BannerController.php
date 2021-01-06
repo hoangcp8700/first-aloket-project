@@ -113,7 +113,7 @@ class BannerController extends Controller
                     Storage::disk('public')->delete($banner->image);
                 }
                 $imagePath = $req->file('image')->store('banner/'.Carbon::now()->toDateString(),'public');
-                // Image::make(storage_path('app/public/'.$imagePath))->resize(1903,500)->save();
+                Image::make(storage_path('app/public/'.$imagePath))->resize(1300,500)->save();
 
             }else{
                 $req['image']= $banner->image;
@@ -134,6 +134,8 @@ class BannerController extends Controller
         }else{
             $imagePath = '';
             $imagePath = $req->file('image')->store('banner/'.Carbon::now()->toDateString(),'public');
+            Image::make(storage_path('app/public/'.$imagePath))->resize(1300,500)->save();
+
             $values = [
                 'image' => $imagePath,
                 'created_at' => Carbon::now(),

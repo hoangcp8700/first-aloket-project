@@ -14,6 +14,9 @@
         </thead>
         <tbody>
             <?php $total = 0; $discount = 0;?>
+            @if(count($cartItems) < 1)
+                <Tr><td colspan="7">Giỏ hàng chưa có sản phẩm nào</td></tr>
+            @else
             @foreach($cartItems as $cart)
             <tr>
                 <td class="product-remove"><a href="javascript:void(0)" class="deleteCart" data-id="{{$cart['id']}}"><i class="pe-7s-close"></i></a></td>
@@ -38,9 +41,10 @@
             </tr>
             <?php
                 $total += $cart['price'] * $cart['quantity'];
-                $discount += $cart['product']['price'] - $cart['price'];
+                $discount += ($cart['product']['price'] - $cart['price']) * $cart['quantity'];
             ?>
             @endforeach
+            @endif
         </tbody>
     </table>
 </div>
@@ -51,9 +55,8 @@
         <div class="cart-page-total">
             <h2>Cart totals</h2>
             <ul>
-                <li>Thành tiền<span>{{number_format($total)}}₫</span></li>
                 <li>Tiết kiệm<span>{{number_format($discount)}}₫</span></li>
-                <li>Thanh toán<span>{{number_format($total - $discount)}}₫</span></li>
+                <li>Thanh toán<span>{{number_format($total)}}₫</span></li>
             </ul>
 
             <a href="{{route('page.checkout')}}">Thanh toán ngay</a>

@@ -2821,7 +2821,7 @@ ul.inbox-pagination li {
 .attachment-mail {
     width: 100%;
     display: inline-block;
-    margin: 20px 0;
+    margin-top: 2em;
     border-top: 1px solid #EFF2F7;
     border-bottom: 1px solid #EFF2F7;
     padding: 10px 0;
@@ -2835,6 +2835,12 @@ ul.inbox-pagination li {
     line-height: 30px;
     margin-bottom: 0;
     text-align: right;
+}
+.table-inbox-wrap tr td.view-message {
+    font-size: 13px!important;
+}
+.view-mail {
+    font-size: 13px;
 }
 .view-mail a,
 .attachment-mail a:hover {
@@ -3723,4 +3729,101 @@ ul.chat-available-user li a:hover {
     width: 206px;
     height: 246px;
     object-fit: cover;
+}
+
+/*--------------------------------------mail ------------------------*/
+.gen-case {
+    font-weight: 700!important;
+}
+.mail-sender {
+    font-size: 13px;
+}
+.mail-sender .gen-case {
+    font-size: 13px;
+}
+.table-inbox tbody {
+    max-height: 42.6em;
+    display: block;
+    overflow: auto;
+    background: #f7f7f7;
+}
+.table-inbox .subject {
+    table-layout: fixed;
+    display: block;
+    width: 250px!important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+}
+.table-inbox .subject a {
+    text-decoration: none;
+}
+.table-inbox .subject a:hover {
+    color: #3dd422;
+}
+.mail .content p {
+    max-height: 23.9em;
+    display: block;
+    overflow: auto;
+}
+.btn-seen {
+    background: #999!important;
+    color: #fff!important;
+}
+.btn-skip {
+    border: 1px solid #999!important;
+}
+.compose-mail label {
+    font-size: 13px;
+}
+#formModalReply input {
+    margin: 4px 0 0 2em;
+    padding: 5px 2em;
+    font-size: 12px;
+    border: 1px solid #fff!important;
+}
+#formModalReply input:focus {
+    box-shadow: none!important;
+    border: none!important;
+    border-bottom: 2px solid #000!important;
+}
+#formModalReply textarea:focus {
+    box-shadow: none!important;
+}
+#loader {
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-bottom: 16px solid #3498db;
+    border-top: 16px solid red;
+    border-left: 16px solid yellow;
+    border-right: 16px solid green;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    100% {
+        transform: rotate(360deg);
+    }
 }

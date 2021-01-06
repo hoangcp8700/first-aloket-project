@@ -33,23 +33,11 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="#">pages</a>
-                                <ul class="single-dropdown">
-                                    <li><a href="{{route('page.about_us')}}">about us</a></li>
-                                    <li><a href="{{route('page.menu_list')}}">Danh mục</a></li>
-                                    <li><a href="{{route('login')}}">Đăng nhập</a></li>
-                                    <li><a href="{{route('register')}}">Đăng ký</a></li>
-                                    <li><a href="{{route('page.cart')}}">Giỏ hàng</a></li>
-                                    <li><a href="{{route('page.checkout')}}">Thanh toán</a></li>
-                                    <li><a href="{{route('page.wishlist')}}">Sản phẩm yêu thích</a></li>
-                                    <li><a href="{{route('page.contact')}}">Liên hệ</a></li>
-                                </ul>
-                            </li>
-
                             <li>
                                 <a href="{{route('page.blog')}}">blog</a>
                             </li>
                             <li><a href="{{route('page.contact')}}">contact</a></li>
+                            <li><a href="{{route('page.about_us')}}">about us</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -60,9 +48,6 @@
                         {{-- <span class="shop-count-furniture green " id="cart-count-all">0</span> --}}
                     </a>
                     <ul class="cart-dropdown">
-                        @if(empty($carts))
-                            <p class="text-center">Không có sản phẩm nào</p>
-                        @else
                         @foreach($carts as $cart)
                         <li class="single-product-cart">
                             <div class="cart-img">
@@ -78,8 +63,9 @@
                             </div>
                         </li>
                         @endforeach
-                        @endif
-                        <div id="cartLoadHeader"></div>
+                        <div id="cartLoadHeader">
+                            <p class="text-center" style="display:none">Không có sản phẩm nào</p>
+                        </div>
 
                         <li class="cart-btn-wrapper">
                             <a class="cart-btn btn-hover" href="{{route('page.cart')}}">view cart</a>
@@ -116,7 +102,7 @@
                             <div class="divider dropdown-divider"></div>
                             <form  action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <button  type="submit" class="dropdown-item dropButton"><i class="fas fa-sign-out-alt "></i> logout</button>
+                                <button  type="submit" class="dropdown-item dropButton"><i class="fas fa-sign-out-alt "></i> Đăng xuất</button>
                             </form>
                         </div>
                     </div>

@@ -20,7 +20,8 @@ class ProfileController extends Controller
             $query->with(['product' => function($query1){
                 $query1->select('id','name');
             }]);
-         }])->where('email',Auth::user()->email)->get()->toArray();
+         }])->where('user_id',Auth::user()->id)->OrWhere('email',Auth::user()->email)
+         ->orderBy('created_at','desc')->get()->toArray();
 
         return view('pages.profile',compact('orders'));
     }

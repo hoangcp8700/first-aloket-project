@@ -30,10 +30,10 @@ class OrderSend extends Mailable
     public function build()
     {
 
-            return $this->from('damnecogiko87@gmail.com','Aloket')
-            ->to($this->data[0]['order']['email'],$this->data[0]['order']['name'])
-            ->subject('Đơn hàng '.$this->data[0]['order']['order_code'])
-            ->markdown('emails.testMail');
+        return $this->from('damnecogiko87@gmail.com','Aloket')
+        ->to($this->data[0]['order']['email'],$this->data[0]['order']['name'])
+        ->subject('Đơn hàng từ Aloket')
+        ->markdown('emails.testMail');
 
         // return $this->from('example@example.com','Aloket')
 

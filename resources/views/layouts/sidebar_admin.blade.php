@@ -63,6 +63,23 @@
               <span>Quản lí coupon</span>
             </a>
         </li>
+        {{-- <li class="sub-menu">
+            <a class="{{ Route::is('contact.index') ? 'active' : '' }}" href="{{route('contact.index')}}">
+              <i class="fa fa-desktop"></i>
+              <span>Phản hồi</span>
+            </a>
+        </li> --}}
+        <li class="sub-menu">
+            <a href="javascript:;" class="{{ Route::is('contact.index') ? 'active' : '' }}" >
+              <i class="far fa-user ml-05"></i>
+              <span>Phản hồi</span>
+              </a>
+            <ul class="sub">
+              <li><a class="{{ Request::url() == url('/admin/contact') ? 'active' : '' }}" href="{{route('contact.index')}}">Table</a></li>
+              <li><a class="{{ Request::url() == url('/admin/contact/mailbox') ? 'active' : '' }}" href="{{route('contact.mailbox')}}">Mailbox</a></li>
+
+            </ul>
+        </li>
       </ul>
       <!-- sidebar menu end-->
     </div>

@@ -26,7 +26,8 @@
 <!-- checkout-area start -->
     <div class="checkout-area ptb-100">
         <div class="container">
-            <div class="row">
+            <div class="row position-relative">
+                <div id="loader" style="display:none"></div>
                 <div class="col-lg-6 col-md-12 col-12">
                     <form method="post" id="checkoutForm">
                         @csrf
@@ -93,7 +94,9 @@
                         </div>
                         <div class="order-button-payment">
                             <input type="submit" value="Xác nhận" />
+
                         </div>
+
                 </div>
 
                 <div class="col-lg-6 col-md-12 col-12">
@@ -133,28 +136,25 @@
                                         <th>Thành tiên</th>
                                         <td><span class="amount">{{number_format($total)}}₫</span></td>
                                     </tr>
-                                    <tr class="cart-subtotal">
-                                        <th>Tiết kiệm</th>
-                                        <td><span class="amount">{{number_format($discount)}}₫</span></td>
-                                    </tr>
                                     <tr class="cart-subtotal" id="discountCart"  style="display:none">
 
                                     </tr>
                                     <tr class="order-total">
                                         <th style="color: #464646;font-size: 20px;">Thanh toán</th>
-                                        <td><strong><span class="amount" id="valuePriceCart" >{{number_format($total - $discount)}}₫</span></strong>
+                                        <td><strong><span class="amount" id="valuePriceCart" >{{number_format($total)}}₫</span></strong>
                                         </td>
                                     </tr>
                                         <input type="hidden" name="order_code" >
                                         <input type="hidden" name="discount" id="totalPrice" >
-                                        <input type="hidden" name="total" value="{{$total - $discount}}">
+                                        <input type="hidden" name="total" value="{{$total}}">
                                         <input type="hidden" name="code" id="codeCoupon">
                                     </form>
 
-            {{-- ************************ Coupon Form  ************************* --}}
+
                                     <tr class="boxFormCoupon">
                                         <th>Sử dụng mã voucher <input type="checkbox" id="showcoupon" value="Click" style="all: revert!important;"></th>
                                     </tr>
+
                                     <Tr class="boxFormCoupon">
                                         <th colspan="2">
                                             <div id="checkout_coupon" class="coupon-checkout-content">
@@ -164,7 +164,8 @@
                                                         <p class="checkout-coupon">
                                                             <input type="hidden" name="quantity" value="1">
                                                             <input type="text"  id="couponCode" name="code" placeholder="Coupon code" />
-                                                            <input type="submit" value="Xác nhận" />
+                                                            <input type="submit" value="Xác nhận"/>
+
                                                         </p>
                                                 </form>
                                                 </div>
@@ -208,9 +209,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="order-button-payment">
-                                    <input type="submit" value="Xác nhận" />
-                                </div> --}}
+
                             </div>
                         </div>
                     </div>

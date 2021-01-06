@@ -57,6 +57,40 @@ button:focus {
 .showOrderDetail{
     line-height: 0;
 }
+#loader {
+    position: absolute;
+    display:none;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-bottom: 16px solid #3498db;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 </style>
 @stop
 
@@ -80,6 +114,7 @@ button:focus {
                         </div>
 
                     </form>
+
                 </div>
             </div>
             <div class="col-md-8">
@@ -98,7 +133,7 @@ button:focus {
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Đổi mật khẩu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="profile" aria-selected="false">Hóa đơn</a>
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="profile" aria-selected="false">Đơn hàng</a>
                         </li>
                     </ul>
                 </div>
@@ -274,6 +309,7 @@ button:focus {
             </div>
         </div>
     </form>
+    <div id="loader"></div>
 </div>
 
 <div class="modal fade bd-example-modal-lg" id="modalOrderProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -286,6 +322,11 @@ button:focus {
                 <div class="form-panel">
                     <form class="cmxform form-horizontal style-form">
                         <div class="form">
+                            <div class="form-group d-flex">
+                                <label for="cname" class="control-label col-lg-4 lbp">Mã đơn hàng</label>
+                                <label class="control-label col-lg-8" id="showCodeOF">
+                                </label>
+                            </div>
                             <div class="form-group d-flex">
                                 <label for="cname" class="control-label col-lg-4 lbp">Tên khách hàng</label>
                                 <label class="control-label col-lg-8" id="showNameOF">

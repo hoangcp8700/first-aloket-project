@@ -76,10 +76,17 @@ route::group(['middleware' => ['auth']], function(){
 /*------------ admin -------------*/
 route::prefix('/admin')->namespace('Admin')->group(function(){
 
+     //contact
+    route::get('/contact/mailbox','ContactController@mailbox')->name('contact.mailbox');
+    route::resource('/contact','ContactController')->except('create','update','edit');
+    route::get('/contact/{contact}/status','ContactController@updateStatus');
+    Route::post('/contact/reply','ContactController@reply');
+
     route::get('/','AdminController@formlogin')->name('admin.login');
     route::post('/register','AdminController@register')->name('admin.register');
     route::post('/','AdminController@login')->name('admin.postLogin');
     route::post('/logout','AdminController@logout')->name('admin.logout');
+
 
     route::group(['middleware' => ['admin']],function(){
         route::get('/dashboard','AdminController@dashboard')->name('dashboard.index');
@@ -109,12 +116,16 @@ route::prefix('/admin')->namespace('Admin')->group(function(){
         // coupons
         route::resource('/coupon','CouponController')->except('create','update');
         route::get('/coupon/{coupon}/status','CouponController@updateStatus');
+
         //admin
         route::resource('/member','AdminController')->except('create','update','show');
+
 
          // section
         route::get('/section','SectionController@index')->name('section.index');
         route::get('/section/{section}/status','SectionController@updateStatus');
+
+
         // profile admin
         route::get('/{page}','ProfileController@index')->name('profile.index');
         Route::post('/profile/change_password','ProfileController@changePassword')->name('profile.changePassword');

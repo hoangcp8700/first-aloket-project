@@ -118,12 +118,12 @@
                                     </label>
                                 </div>
                                 <div class="form-group d-flex">
-                                    <label for="cname" class="control-label col-lg-4 lbp">Hóa đơn gốc</label>
+                                    <label for="cname" class="control-label col-lg-4 lbp">Thành tiền</label>
                                     <label class="v col-lg-8" id="showTotalO">
                                     </label>
                                 </div>
                                 <div class="form-group d-flex">
-                                    <label for="cname" class="control-label col-lg-4 lbp">Hóa đơn giảm  </label>
+                                    <label for="cname" class="control-label col-lg-4 lbp">Thanh toán</label>
                                     <label class="v col-lg-8" id="showDiscountO">
                                     </label>
                                 </div>

@@ -89,6 +89,12 @@ function elementCart(id, name, color, size, price, quantity, img) {
     return html;
 }
 
+if (document.querySelector('.single-product-cart') == null) {
+    document.querySelector('#cartLoadHeader p ').style.display = 'block';
+}
+
+
+
 function loadCart(idCart, nameCart, colorCart, sizeCart, priceCart, quantityCart, imgCart) {
     var maxField = 2;
     var wrapper = $('#cartLoadHeader');

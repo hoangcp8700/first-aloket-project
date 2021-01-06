@@ -95,7 +95,7 @@ class ProductImageController extends Controller
                     $DBProductImage = ProductImage::where('product_id',$data['product_id'])->get()->count();
 
                     $imagePath = $value->store('product_children/children_'. $data['product_id'] . '/' .Carbon::now()->toDateString(),'public');
-                    Image::make(storage_path('app/public/'.$imagePath))->resize(125,156)->save();
+                    Image::make(storage_path('app/public/'.$imagePath))->resize(500,653)->save();
                     $ArrImages= [
                         'product_id' => $data['product_id'],
                         'image' => $imagePath
@@ -120,7 +120,7 @@ class ProductImageController extends Controller
                     Storage::disk('public')->delete($productAttr->image);
                 }
                 $imagePath = $req->file('image')->store('product_children/'.Carbon::now()->toDateString(),'public');
-                Image::make(storage_path('app/public/'.$imagePath))->resize(125,156)->save();
+                Image::make(storage_path('app/public/'.$imagePath))->resize(500,653)->save();
                 $productAttr->update([
                     'image' => $imagePath,
                     'updated_at' => Carbon::now()

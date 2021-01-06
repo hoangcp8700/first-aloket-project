@@ -13,6 +13,7 @@ function loadName(name) {
 }
 
 function submitUpload(theForm) {
+    document.querySelector('#loader').style.display = 'block';
     $.ajax({
         type: 'post',
         url: '/profile/upload',
@@ -20,7 +21,7 @@ function submitUpload(theForm) {
         contentType: false, // có FormData mới bỏ vào
         processData: false, // có FormData mới bỏ vào
         success: function(response) {
-            console.log(response);
+            document.querySelector('#loader').style.display = 'none';
             swal({
                 icon: response.statuscode,
                 title: response.status
@@ -40,7 +41,6 @@ $(document).on('submit', '#formProfile', function(e) {
         url: '/profile/store',
         data: data,
         success: function(data) {
-            console.log(data);
             swal({
                 icon: data.statuscode,
                 title: data.status
@@ -87,6 +87,7 @@ $(document).on('click', '.showOrderProfile', function() {
         url: '/profile/order',
         data: { order_id: order_id },
         success: function(data) {
+            document.querySelector('#showCodeOF').textContent = data.order_code;
             document.querySelector('#showNameOF').textContent = data.name;
             document.querySelector('#showEmailOF').textContent = data.email;
             document.querySelector('#showPhoneOF').textContent = data.phone;

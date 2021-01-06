@@ -77,10 +77,7 @@ class PageController extends Controller
         }
     }
 
-    public function deleteWishlist(Request $req,$product,$user)
-    {
-        dd($req->all());
-    }
+
     public function about_us()
     {
         $categories = Category::where('status',1)->orderBy('name','desc')->get();

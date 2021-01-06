@@ -53,7 +53,7 @@
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
         <ul class="nav top-menu">
-          <!-- settings start -->
+
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
               <i class="fa fa-tasks"></i>
@@ -121,8 +121,7 @@
               </li>
             </ul>
           </li>
-          <!-- settings end -->
-          <!-- inbox dropdown start-->
+
           <li id="header_inbox_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
               <i class="fa fa-envelope-o"></i>
@@ -135,7 +134,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-zac.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="{{asset('backend/img/ui-zac.jpg')}}"></span>
                   <span class="subject">
                   <span class="from">Zac Snider</span>
                   <span class="time">Just now</span>
@@ -147,7 +146,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-divya.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="{{asset('backend/img/ui-divya.jpg')}}"></span>
                   <span class="subject">
                   <span class="from">Divya Manian</span>
                   <span class="time">40 mins.</span>
@@ -159,7 +158,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-danro.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="{{asset('backend/img/ui-danro.jpg')}}"></span>
                   <span class="subject">
                   <span class="from">Dan Rogers</span>
                   <span class="time">2 hrs.</span>
@@ -171,7 +170,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="{{asset('backend/img/ui-sherman.jpg')}}"></span>
                   <span class="subject">
                   <span class="from">Dj Sherman</span>
                   <span class="time">4 hrs.</span>
@@ -186,8 +185,7 @@
               </li>
             </ul>
           </li>
-          <!-- inbox dropdown end -->
-          <!-- notification dropdown start-->
+
           <li id="header_notification_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
               <i class="fa fa-bell-o"></i>
@@ -228,6 +226,31 @@
               </li>
               <li>
                 <a href="index.html#">See all notifications</a>
+              </li>
+            </ul>
+          </li>
+          <?php use App\Contact; $contacts = Contact::headerContact() ;?>
+          <li id="header_contact_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+              <i class="far fa-address-book"></i>
+              <span class="badge bg-warning"> {{count($contacts)}} </span>
+              </a>
+            <ul class="dropdown-menu extended notification">
+              <div class="notify-arrow notify-arrow-yellow"></div>
+              <li>
+                <p class="yellow">Bạn nhận được {{count($contacts)}} phản hồi</p>
+              </li>
+              @foreach($contacts as $contact)
+              <li>
+                <a href="{{route('contact.mailbox')}}">
+                  <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                  {{$contact['email']}}
+                  <span class="small italic"> {{Contact::date($contact['created_at'])}} </span>
+                  </a>
+              </li>
+              @endforeach
+              <li>
+                <a href="{{route('contact.mailbox')}}">Xem tất cả</a>
               </li>
             </ul>
           </li>
