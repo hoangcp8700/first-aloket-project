@@ -3,13 +3,15 @@
 @section('nd')
 <?php
     use App\Banner;
-    $bannerHeader   = Banner::banners('index');
-    $bannerMiddle   = Banner::banners('index-middle');
-    $bannerDoc      = Banner::banners('index-doc');
-    $bannerNgang1   = Banner::banners('index-ngang-1');
-    $bannerNgang2   = Banner::banners('index-ngang-2');
-    $bannerNgang3   = Banner::banners('index-ngang-3');
-    $bannerNgang4   = Banner::banners('index-ngang-4');
+    $bannerHeader   = Banner::bannerIndex('index');
+    $bannerMiddle   = Banner::bannerIndex('index-middle');
+    $bannerDoc      = Banner::bannerIndex('index-doc');
+    $bannerNgang1   = Banner::bannerIndex('index-ngang-1');
+    $bannerNgang2   = Banner::bannerIndex('index-ngang-2');
+    $bannerNgang3   = Banner::bannerIndex('index-ngang-3');
+    $bannerNgang4   = Banner::bannerIndex('index-ngang-4');
+
+
     if($bannerHeader){
         $banner1 = asset('/storage/'.$bannerHeader[0]->image);
     }
@@ -31,8 +33,6 @@
     if($bannerNgang4){
         $bannerN4 = asset('/storage/'.$bannerNgang4[0]->image);
     }
-
-    // echo '<pre>';print_r($bannerMiddle); die;
 ?>
     @if($banner1 ?? '')
     <div class="slider-area">
@@ -135,40 +135,23 @@
                                 <a href="{{route('page.productDetail',$product->product_code)}}">
                                     <img src="{{asset('/storage/'.$product->image)}}" alt="">
                                 </a>
-                                    @if($product->keyword)
-                                        <span>{{$product->keyword}}</span>
-                                    @endif
-                                    {{-- <div class="product-action">
-                                        <a class="animate-left" title="Show" href="#">
-                                            <i class="pe-7s-like"></i>
-                                        </a>
-
-                                        {{-- <form class="product-form">
-                                            <input type="hidden" class="productCode " value="{{$product->product_code}}">
-                                            <input type="hidden" class="productName" value="{{$product->name}}">
-                                            <input type="hidden" class="productPrice" value="{{$product->price}}">
-                                            <a class="animate-top add-cart" title="Add To Cart" href="javascript:void(0)">
-                                                <i class="pe-7s-cart"></i>
-                                            </a>
-                                        </form> --}}
-
-                                    {{-- </div> --}}
-
+                                @if($product->keyword)
+                                    <span>{{$product->keyword}}</span>
+                                @endif
                             </div>
                             <div class="product-content">
                                 <h4><a href="{{route('page.productDetail',$product->product_code)}}">{{$product->name}}</a></h4>
                                 <span>{{number_format($product->price)}}</span> <span style="font-size:14px">vnđ</span>
                             </div>
                         </div>
-
                     </div>
-
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
     <!-- all products area end -->
+
     <!-- fashion banner area start -->
     @if($banner2 ?? '')
     <div class="fashion-banner-area pb-120">
@@ -184,122 +167,38 @@
     </div>
     @endif
     <!-- testimonials area start -->
-    <div class="testimonials-area pt-105 pb-105">
+    <div class="testimonials-area  pb-105">
         <div class="container">
             <div class="section-title-2 text-center mb-35">
-                <h2>Testimonial</h2>
+                <h2>Giới thiệu</h2>
             </div>
+
             <div class="testimonials-active owl-carousel">
                 <div class="single-testimonial-4 text-center">
                     <img src="{{asset('frontend/assets')}}/img/icon-img/42.png" alt="">
-                    <p>This product is best product i ever get. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna.</p>
-                    <h4>Newaz Sharif  /  UI Ux Designer</h4>
+                    <p>Aloket xuất hiện trên thị trường từ đầu năm 2021,
+                        Aloket mang sức mạnh của một thương hiệu local brand đầy cá tính với những sản phẩm thời trang hàng đầu xu thế.</p>
+                    <h4>Aloket</h4>
                 </div>
                 <div class="single-testimonial-4 text-center">
                     <img src="{{asset('frontend/assets')}}/img/icon-img/42.png" alt="">
-                    <p>This product is best product i ever get. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna.</p>
-                    <h4>Newaz Sharif  /  UI Ux Designer</h4>
+                    <p>Với sức hút của mình, Aloket trở thành biểu tượng cho phong cách thời trang mạnh mẽ, táo bạo, và được ưa chuộng rộng rãi.</p>
+                    <h4>Aloket</h4>
                 </div>
                 <div class="single-testimonial-4 text-center">
                     <img src="{{asset('frontend/assets')}}/img/icon-img/42.png" alt="">
-                    <p>This product is best product i ever get. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna.</p>
-                    <h4>Newaz Sharif  /  UI Ux Designer</h4>
+                    <p>Aloket mang đến một cái góc độ độc đáo không những về phong cách sống mà còn về gout ăn mặc hiện đại.
+                        Aloket nhận thức được nhu cầu đang phát triển của thị trường Streetwear Việt Nam.</p>
+                    <h4>Aloket</h4>
+                </div>
+                <div class="single-testimonial-4 text-center">
+                    <img src="{{asset('frontend/assets')}}/img/icon-img/42.png" alt="">
+                    <p>Đây là cách Aloket mang đến giá trị cho cộng đồng trẻ yêu thích Streetwear, khuyến khích họ mạo hiểm trong gu ăn mặc của mình</p>
+                    <h4>Aloket</h4>
                 </div>
             </div>
         </div>
     </div>
-    <!-- testimonials area end -->
-
-    <!-- modal -->
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span class="pe-7s-close" aria-hidden="true"></span>
-        </button>
-        <div class="modal-dialog modal-quickview-width" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="qwick-view-left">
-                        <div class="quick-view-learg-img">
-                            <div class="quick-view-tab-content tab-content">
-                                <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-                                    <img src="{{asset('frontend/assets')}}/img/quick-view/l1.jpg" alt="">
-                                </div>
-                                <div class="tab-pane fade" id="modal2" role="tabpanel">
-                                    <img src="{{asset('frontend/assets')}}/img/quick-view/l2.jpg" alt="">
-                                </div>
-                                <div class="tab-pane fade" id="modal3" role="tabpanel">
-                                    <img src="{{asset('frontend/assets')}}/img/quick-view/l3.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quick-view-list nav" role="tablist">
-                            <a class="active" href="#modal1" data-toggle="tab" role="tab">
-                                <img src="{{asset('frontend/assets')}}/img/quick-view/s1.jpg" alt="">
-                            </a>
-                            <a href="#modal2" data-toggle="tab" role="tab">
-                                <img src="{{asset('frontend/assets')}}/img/quick-view/s2.jpg" alt="">
-                            </a>
-                            <a href="#modal3" data-toggle="tab" role="tab">
-                                <img src="{{asset('frontend/assets')}}/img/quick-view/s3.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="qwick-view-right">
-                        <div class="qwick-view-content">
-                            <h3>Handcrafted Supper Mug</h3>
-                            <div class="price">
-                                <span class="new">$90.00</span>
-                                <span class="old">$120.00  </span>
-                            </div>
-                            <div class="rating-number">
-                                <div class="quick-view-rating">
-                                    <i class="pe-7s-star"></i>
-                                    <i class="pe-7s-star"></i>
-                                    <i class="pe-7s-star"></i>
-                                    <i class="pe-7s-star"></i>
-                                    <i class="pe-7s-star"></i>
-                                </div>
-                                <div class="quick-view-number">
-                                    <span>2 Ratting (S)</span>
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
-                            <div class="quick-view-select">
-                                <div class="select-option-part">
-                                    <label>Size*</label>
-                                    <select class="select">
-                                        <option value="">- Please Select -</option>
-                                        <option value="">900</option>
-                                        <option value="">700</option>
-                                    </select>
-                                </div>
-                                <div class="select-option-part">
-                                    <label>Color*</label>
-                                    <select class="select">
-                                        <option value="">- Please Select -</option>
-                                        <option value="">orange</option>
-                                        <option value="">pink</option>
-                                        <option value="">yellow</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="quickview-plus-minus">
-                                <div class="cart-plus-minus">
-                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                </div>
-                                <div class="quickview-btn-cart">
-                                    <a class="btn-hover-black" href="#">add to cart</a>
-                                </div>
-                                <div class="quickview-btn-wishlist">
-                                    <a class="btn-hover" href="#"><i class="pe-7s-like"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <div class="clickable-mainmenu text-center">
         <div class="clickable-mainmenu-icon">
@@ -319,12 +218,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="about-us.html">about us</a>
-                </li>
-                <li>
-                    <a href="#">pages</a>
+                    <a href="#">Services</a>
                     <ul>
-                        <li><a href="{{route('page.about_us')}}">about us</a></li>
                         <li><a href="{{route('page.menu_list')}}">Danh mục</a></li>
                         <li><a href="{{route('login')}}">Đăng nhập</a></li>
                         <li><a href="{{route('register')}}">Đăng ký</a></li>
@@ -334,9 +229,7 @@
                         <li><a href="{{route('page.contact')}}">Liên hệ</a></li>
                     </ul>
                 </li>
-                <li><a href="{{route('page.blog')}}">blogs</a></li>
             </ul>
         </div>
     </div>
-
 @stop

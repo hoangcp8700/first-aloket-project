@@ -242,7 +242,7 @@
               </li>
               @foreach($contacts as $contact)
               <li>
-                <a href="{{route('contact.mailbox')}}">
+                <a href="{{route('contact.index')}}">
                   <span class="label label-danger"><i class="fa fa-bolt"></i></span>
                   {{$contact['email']}}
                   <span class="small italic"> {{Contact::date($contact['created_at'])}} </span>
@@ -250,7 +250,7 @@
               </li>
               @endforeach
               <li>
-                <a href="{{route('contact.mailbox')}}">Xem tất cả</a>
+                <a href="{{route('contact.index')}}">Xem tất cả</a>
               </li>
             </ul>
           </li>

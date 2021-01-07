@@ -78,20 +78,6 @@ class PageController extends Controller
     }
 
 
-    public function about_us()
-    {
-        $categories = Category::where('status',1)->orderBy('name','desc')->get();
-
-        return view('pages.about_us')->with('categories',$categories);
-    }
-
-    public function blog()
-    {
-        $categories = Category::where('status',1)->orderBy('name','desc')->get();
-
-        return view('pages.blog')->with('categories',$categories);
-    }
-
     public function contact()
     {
         $categories = Category::where('status',1)->orderBy('name','desc')->get();

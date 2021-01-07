@@ -21,11 +21,13 @@ function submitUpload(theForm) {
         contentType: false, // có FormData mới bỏ vào
         processData: false, // có FormData mới bỏ vào
         success: function(response) {
-            document.querySelector('#loader').style.display = 'none';
-            swal({
-                icon: response.statuscode,
-                title: response.status
-            });
+            setTimeout(function() {
+                document.querySelector('#loader').style.display = 'none';
+                swal({
+                    icon: data.statuscode,
+                    title: data.status
+                });
+            }, 3000);
             if (response.statuscode == 'success') {
                 window.addEventListener('load', loadAvatar(response.data.image));
             }
@@ -34,6 +36,7 @@ function submitUpload(theForm) {
 }
 // change profile
 $(document).on('submit', '#formProfile', function(e) {
+    document.querySelector('#loader').style.display = 'block';
     e.preventDefault();
     var data = $(this).serialize();
     $.ajax({
@@ -41,10 +44,13 @@ $(document).on('submit', '#formProfile', function(e) {
         url: '/profile/store',
         data: data,
         success: function(data) {
-            swal({
-                icon: data.statuscode,
-                title: data.status
-            });
+            setTimeout(function() {
+                document.querySelector('#loader').style.display = 'none';
+                swal({
+                    icon: data.statuscode,
+                    title: data.status
+                });
+            }, 3000);
             if (data.statuscode == 'success') {
                 window.addEventListener('load', loadName(data.data.name));
             }
@@ -58,16 +64,20 @@ $(document).on('submit', '#formProfile', function(e) {
 // change password
 $(document).on('submit', '#formPassword', function(e) {
     e.preventDefault();
+    document.querySelector('#loader').style.display = 'block';
     var data = $(this).serialize();
     $.ajax({
         type: 'post',
         url: '/profile/password',
         data: data,
         success: function(data) {
-            swal({
-                icon: data.statuscode,
-                title: data.status
-            });
+            setTimeout(function() {
+                document.querySelector('#loader').style.display = 'none';
+                swal({
+                    icon: data.statuscode,
+                    title: data.status
+                });
+            }, 3000);
             if (data.statuscode == 'success') {
                 $("#formPassword").trigger("reset")
             }

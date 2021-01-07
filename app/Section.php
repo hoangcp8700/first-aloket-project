@@ -12,7 +12,9 @@ class Section extends Model
 
     public static function sections()
     {
-        $sections = Section::with(['category'])->where('status',1)->get();
+        $sections = Section::with(['category' => function($query){
+            $query->limit(10);
+        }])->where('status',1)->get();
         $sections = json_decode(json_encode($sections),true);
         return $sections;
     }

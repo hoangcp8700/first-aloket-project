@@ -5,12 +5,7 @@
     use App\Banner;
     use App\Cart;
     $bannersM = Banner::banners('check-out');
-     // echo '<pre>'; print_r($bannersM); die;
-    if(!$bannersM){
-       $bannersM = asset('frontend/assets/img/bg/breadcrumb.jpg');
-    }else{
-        $bannersM = asset('/storage/'.$bannersM[0]->image);
-    }
+
 ?>
 <div class="breadcrumb-area pt-205 pb-210"  style="background-image: url({{$bannersM}})">
     <div class="container">

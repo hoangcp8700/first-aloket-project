@@ -344,7 +344,8 @@ ul.child-menu-list-dropdown li:first-child {
     border-bottom: 16px solid #3498db;
     border-top: 16px solid #3498db;
     -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+    animation: spin 1s linear infinite;
+    display: none;
 }
 
 @-webkit-keyframes spin {

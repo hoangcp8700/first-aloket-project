@@ -33,8 +33,6 @@ class BannerController extends Controller
             'check-out' => 'Trang thanh toán',
             'wishlist' => 'Trang yêu thích',
             'contact' => 'Trang liên hệ',
-            'blog' => 'Trang blog',
-            'about-us' => 'Trang about us',
             'product-detail' =>'Trang chi tiết sản phẩm'
         ];
         return view('admin.banner',compact('urlBanners'));

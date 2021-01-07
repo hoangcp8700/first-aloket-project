@@ -33,11 +33,7 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li>
-                                <a href="{{route('page.blog')}}">blog</a>
-                            </li>
                             <li><a href="{{route('page.contact')}}">contact</a></li>
-                            <li><a href="{{route('page.about_us')}}">about us</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -82,7 +78,7 @@
                 <div class="furniture-login">
                     @if(!Auth::user())
                     <ul>
-                        <li>Get Access: <a href="{{route('login')}}">Đăng nhập </a></li>
+                        <li><a href="{{route('login')}}">Đăng nhập </a></li>
                         <li><a href="{{route('register')}}">Đăng ký </a></li>
                     </ul>
                     @else
@@ -129,3 +125,4 @@
         </div>
     </div>
 </header>
+<div id="loader"></div>

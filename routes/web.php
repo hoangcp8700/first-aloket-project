@@ -18,7 +18,6 @@ Route::get('/', 'PageController@index')->name('page.index');
 Route::get('/thanh-toan','PageController@checkout')->name('page.checkout');
 Route::get('/gio-hang','PageController@cart')->name('page.cart');
 
-Route::get('/about-us','PageController@about_us')->name('page.about_us');
 Route::get('/blog','PageController@blog')->name('page.blog');
 Route::get('/lien-he','PageController@contact')->name('page.contact');
 Route::get('/danh-muc','PageController@menu_list')->name('page.menu_list');
@@ -77,10 +76,8 @@ route::group(['middleware' => ['auth']], function(){
 route::prefix('/admin')->namespace('Admin')->group(function(){
 
      //contact
-    route::get('/contact/mailbox','ContactController@mailbox')->name('contact.mailbox');
     route::resource('/contact','ContactController')->except('create','update','edit');
-    route::get('/contact/{contact}/status','ContactController@updateStatus');
-    Route::post('/contact/reply','ContactController@reply');
+    Route::post('/contact/reply','ContactController@reply')->name('contact.reply');
 
     route::get('/','AdminController@formlogin')->name('admin.login');
     route::post('/register','AdminController@register')->name('admin.register');

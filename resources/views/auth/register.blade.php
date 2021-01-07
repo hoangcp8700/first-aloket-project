@@ -1,20 +1,17 @@
 
 @extends('layouts.app')
+
 @section('style')
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('frontend/assets/css/loginform.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/loginform.css')}}">
 @stop
+
 @section('nd')
 
 <?php
     use App\Banner;
     $bannersM = Banner::banners('register');
-    if(!$bannersM){
-       $bannersM = asset('frontend/assets/img/bg/breadcrumb.jpg');
-    }else{
-        $bannersM = asset('/storage/'.$bannersM[0]->image);
-    }
 ?>
 
 <div class="breadcrumb-area pt-205 pb-210"  style=" background-image: url({{$bannersM}})">
@@ -65,14 +62,12 @@
 </div>
 
 @endsection
-@section('script')
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-
-
-<script>
-$(document).ready(function(){
-  $('#birth-date').mask('00/00/0000');
-  $('#phone-number').mask('0000-0000');
- })
-</script>
-@stop
+@push('script')
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#birth-date').mask('00/00/0000');
+            $('#phone-number').mask('0000-0000');
+        })
+    </script>
+@endpush

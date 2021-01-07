@@ -63,10 +63,12 @@
     });
 
     function showMessage(id){
-        var contact_id = id
+        event.preventDefault();
+        var contact_id = id;
         $.get("{{ route('contact.index') }}" + '/' + contact_id, function(data) {
             $('#loadMailBox').html(data.view);
         })
+
     }
 
     function buttonReply(id){
@@ -100,65 +102,108 @@
     }
 
     function hideModal() {
-        $("#formModalReply").removeClass("in");
+        $("#formModalReply").removeClass("show in");
         $(".modal-backdrop").remove();
         $("#formModalReply").hide();
+
     }
 
     function buttonSend(){
         event.preventDefault();
         document.querySelector('#loader').style.display = 'block';
 
-         for ( instance in CKEDITOR.instances )
+        for ( instance in CKEDITOR.instances ){
             CKEDITOR.instances["contactContent"].updateElement();
-
-         var form = $('#replyForm').serialize();
+        }
+        var form = $('#replyForm').serialize();
         $.ajax({
-            url: '/admin/contact/reply',
+            url: '{{route('contact.reply')}}',
             data: form,
             type: 'post',
             success: function(data){
-
                 setTimeout(function() {
                     document.querySelector('#loader').style.display = 'none';
                     swal({
                         icon: data.statuscode,
                         title: data.status
                     });
+                    $('#inboxView').html(data.view);
                 }, 3000);
-
                 if(data.statuscode == 'success'){
                     hideModal();
-                    $('#inboxView').html(data.view);
                 }
-
-
             },error: function(){
                 alert('error');
             }
         })
     }
-    // $('#replyForm').on('submit',function(e){
-    //     e.preventDefault();
-    //     // for ( instance in CKEDITOR.instances )
-    //     //     CKEDITOR.instances["reply-ckeditor"].updateElement();
-    //     // var data =  new FormData($(this)[0]);
-    //     var data = $(this).serialize();
 
-    //     $.ajax({
-    //         url: '/admin/contact/reply',
-    //         data: data,
-    //         type: 'post',
-    //         // contentType: false, // có FormData mới bỏ vào
-    //         // processData: false,// có FormData mới bỏ vào
-    //         success: function(data){
-    //             console.log(data);
-    //         },error: function(){
-    //             alert('error');
-    //         }
-    //     })
+    function btnSeen(){
+        event.preventDefault();
+        document.querySelector('#loader').style.display = 'block';
 
-    // })
+        let contact_id = $('#contactID').val();
+
+        $.ajax({
+            url: '{{route('contact.reply')}}',
+            type: 'post',
+            data: { "_token": "{{ csrf_token() }}", id: contact_id, reply:true},
+            success: function(data){
+                setTimeout(function() {
+                    document.querySelector('#loader').style.display = 'none';
+                    swal({
+                        icon: data.statuscode,
+                        title: data.status
+                    });
+                    $('#inboxView').html(data.view);
+                }, 3000);
+
+                if(data.statuscode == 'success'){
+                    hideModal();
+                }
+            },error: function(){
+                alert('error');
+            }
+        })
+    }
+
+    function buttonDelete(id){
+        event.preventDefault();
+
+        swal({
+            title: "Bạn đã chắc chắc muốn xóa phản hồi này?",
+            text: "Khi bạn đã xóa nó đi thì sẽ không bao giờ khôi phục lại được.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            document.querySelector('#loader').style.display = 'block';
+            if (willDelete) {
+                $.ajax({
+                    url: "{{ route('contact.store') }}"+'/'+id,
+                    type: 'delete',
+                    data: { "_token": "{{ csrf_token() }}","id": id },
+                    success: function(data){
+                        setTimeout(function() {
+                            document.querySelector('#loader').style.display = 'none';
+                            swal({
+                                icon: data.statuscode,
+                                title: data.status
+                            });
+                            $('#inboxView').html(data.view);
+                        }, 3000);
+                    },error: function(){
+                        alert('error');
+                    }
+                })
+            } else {
+                document.querySelector('#loader').style.display = 'none';
+                swal("Phản hồi vẫn còn nguyên vẹn");
+            }
+        });
+
+    }
 </script>
 
 @stop

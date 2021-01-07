@@ -5,14 +5,8 @@
 <?php
     use App\Banner;
     $bannersM = Banner::banners('wishlist');
-     // echo '<pre>'; print_r($bannersM); die;
-    if(!$bannersM){
-       $banner = asset('frontend/assets/img/bg/breadcrumb.jpg');
-    }else{
-        $banner = asset('/storage/'.$bannersM[0]->image);
-    }
 ?>
-<div class="breadcrumb-area pt-205 pb-210" style="background-image: url({{$banner}})">
+<div class="breadcrumb-area pt-205 pb-210" style="background-image: url({{$bannersM}})">
     <div class="container">
         <div class="breadcrumb-content text-center">
             <h2>wishlist</h2>
@@ -37,6 +31,6 @@
 
 @stop
 
-@push('scripts')
-<script src="{{asset('frontend/assets/js/pages/wishlist.js')}}"> </script>
+@push('script')
+    <script src="{{asset('frontend/assets/js/pages/wishlist.js')}}"> </script>
 @endpush

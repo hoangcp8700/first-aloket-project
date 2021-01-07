@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="formModalReply" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -28,7 +27,7 @@
                                 </div>
                                 <div class="compose-btn">
                                     <button class="btn btn-info btn-lg" type="submit"><i class="fa fa-check"></i> Send</button>
-                                    <button class="btn btn-lg btn-seen" id="btn-seen"><i class="far fa-eye"></i> Đã xem</button>
+                                    <button class="btn btn-lg btn-seen" onClick="btnSeen()" type="button"><i class="far fa-eye"></i> Đã xem</button>
                                     <button class="btn btn-lg btn-skip" type="button" data-dismiss="modal">Bỏ qua</button>
                                 </div>
                             </form>

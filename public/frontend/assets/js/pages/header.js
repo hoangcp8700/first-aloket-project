@@ -1,5 +1,6 @@
 $('#formSearchOrder').on('submit', function(e) {
     e.preventDefault();
+    document.querySelector('#loader').style.display = 'block';
     var searchOrder = $('#searchOrder').val();
     $.ajax({
         type: 'post',
@@ -14,22 +15,27 @@ $('#formSearchOrder').on('submit', function(e) {
                 });
                 $('#formSearchOrder').trigger("reset");
             } else {
-                $('#tableModalShowOrderEmail').modal('show');
-                document.querySelector('#showEmail').textContent = data.data[0].email;
-                var showEmail = '';
-                // for (let i = 0; i < data.length; i++) {
-                showEmail += '<tr>' +
-                    '<td>' + dateString(data.data[0].created_at) + '</td>' +
-                    '<td>' + numberFormat(data.data[0].discount) + '</td>' +
-                    '<td>' + labelStatus(data.data[0].status) + '</td>' +
-                    '<td>' +
-                    '<a class="btn btn-success showOrderDetail" data-id="' + data.data[0].id + '"' +
-                    'data-toggle="modal" href="javascript:void(0)" data-target="#tableModalShowOrder">' +
-                    '<i class="far fa-eye"></i>' +
-                    '</a></td>' +
-                    '</<tr>';
-                // }
-                document.querySelector('#showEmailTable').innerHTML = showEmail;
+                setTimeout(function() {
+                    document.querySelector('#loader').style.display = 'none';
+                    $('#tableModalShowOrderEmail').modal('show');
+                    document.querySelector('#showEmail').textContent = data.data[0].email;
+                    var showEmail = '';
+                    // for (let i = 0; i < data.length; i++) {
+                    showEmail += '<tr>' +
+                        '<td>' + dateString(data.data[0].created_at) + '</td>' +
+                        '<td>' + numberFormat(data.data[0].discount) + '</td>' +
+                        '<td>' + labelStatus(data.data[0].status) + '</td>' +
+                        '<td>' +
+                        '<a class="btn btn-success showOrderDetail" data-id="' + data.data[0].id + '"' +
+                        'data-toggle="modal" href="javascript:void(0)" data-target="#tableModalShowOrder">' +
+                        '<i class="far fa-eye"></i>' +
+                        '</a></td>' +
+                        '</<tr>';
+                    // }
+                    document.querySelector('#showEmailTable').innerHTML = showEmail;
+                }, 3000);
+
+
             }
         },
         error: function() {

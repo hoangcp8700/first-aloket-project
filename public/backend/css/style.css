@@ -3808,6 +3808,7 @@ ul.chat-available-user li a:hover {
     -webkit-animation: spin 2s linear infinite;
     animation: spin 1s linear infinite;
     display: none;
+    z-index: 1;
 }
 @-webkit-keyframes spin {
     0% {
@@ -3826,4 +3827,33 @@ ul.chat-available-user li a:hover {
     100% {
         transform: rotate(360deg);
     }
+}
+.mail .reply .mail-border {
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin: 2em 0;
+}
+.mail .reply h4 {
+    font-size: 24px;
+    color: #a2a2a2;
+}
+.mail .reply .subject {
+    width: 100%;
+    display: inline-block;
+    margin-top: 2em;
+    border-top: 1px solid #EFF2F7;
+    border-bottom: 1px solid #EFF2F7;
+    padding: 1em 0;
+}
+.mail .reply .subject h4 {
+    font-size: 13px!important;
+}
+.mail .reply .p {
+    max-height: 14em;
+    display: block;
+    overflow: auto;
+}
+.mail .reply .reply_date {
+    padding: 1em 0;
+    border-bottom: 2px solid #EFF2F7;
 }

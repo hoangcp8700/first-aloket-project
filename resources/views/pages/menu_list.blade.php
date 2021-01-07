@@ -9,12 +9,6 @@
     $sections = Section::sections();
     $categoriesM = Category::categories();
     $bannersM = Banner::banners('menu-list');
-    if(!$bannersM){
-       $bannersM = asset('frontend/assets/img/bg/breadcrumb.jpg');
-    }else{
-        $bannersM = asset('/storage/'.$bannersM[0]->image);
-    }
-    // echo '<pre>'; print_r($bannersM); die;
 ?>
 
 <div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: url({{$bannersM}})">
@@ -49,23 +43,20 @@
                     </div>
                     <div class="sidebar-widget mb-45">
                         <h3 class="sidebar-title">Categories</h3>
-                        {{-- <div class="sidebar-categories"> --}}
-                        <div class="">
-                            <ul>
-                                @foreach($sections as $section)
-                                    @if(count($section['category'])>0 )
-                                    <li class="pb-3">
-                                        <i class="fas fa-tshirt"></i> <a href="#" class="parent_a_dropdown">{{$section['name']}}</a>
-                                        @foreach($section['category'] as $category)
-                                        <ul class="child-menu-list-dropdown">
-                                            <li><a href="{{route('page.menu_listen',$category['slug'])}}" autofocus>{{$category['name']}}</a>   </li>
-                                        </ul>
-                                        @endforeach
-                                    </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
+                        <ul>
+                            @foreach($sections as $section)
+                                @if(count($section['category'])>0 )
+                                <li class="pb-3">
+                                    <a href="#" class="parent_a_dropdown">{{$section['name']}}</a>
+                                    @foreach($section['category'] as $category)
+                                    <ul class="child-menu-list-dropdown">
+                                        <li><a href="{{route('page.menu_listen',$category['slug'])}}" autofocus>{{$category['name']}}</a>   </li>
+                                    </ul>
+                                    @endforeach
+                                </li>
+                                @endif
+                            @endforeach
+                        </ul>
                     </div>
 
                 </div>
@@ -75,9 +66,6 @@
                     <div class="shop-bar-area">
                         <div class="shop-bar pb-60">
                             <div class="shop-found-selector">
-                                {{-- <div class="shop-found">
-                                    <p><span>{{count($products)}}</span> trong <span>{{$products->total()}}</span> sản phẩm</p>
-                                </div> --}}
                                 @if($categoryDetails[0])
                                 <?php $urlSort = $categoryDetails[0]->slug?>
                                 <form>
@@ -121,5 +109,5 @@
 @stop
 
 @push('script')
-<script src="{{asset('frontend/assets/js/pages/menu_list.js')}}"> </script>
+    <script src="{{asset('frontend/assets/js/pages/menu_list.js')}}"> </script>
 @endpush
