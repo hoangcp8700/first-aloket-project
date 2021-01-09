@@ -35,7 +35,7 @@
                         <div class="sidebar-search">
                             <form method="post">
                                 @csrf
-                                <input id="searchCategory" name="category_id" type="hidden" value="{{$categoryDetails[0]->id}}">
+                                <input id="searchCategory" name="category_id" type="hidden" value="{{$categoryDetails[0]->id ?? ''}}">
                                 <input id="searchProduct" name="search" placeholder="Search Products..." type="text">
                                 <button type="submit"><i class="ti-search"></i></button>
                             </form>
@@ -48,11 +48,13 @@
                                 @if(count($section['category'])>0 )
                                 <li class="pb-3">
                                     <a href="#" class="parent_a_dropdown">{{$section['name']}}</a>
-                                    @foreach($section['category'] as $category)
+
                                     <ul class="child-menu-list-dropdown">
-                                        <li><a href="{{route('page.menu_listen',$category['slug'])}}" autofocus>{{$category['name']}}</a>   </li>
+                                        @foreach($section['category'] as $category)
+                                        <li class="pt-3"><a  href="{{route('page.menu_listen',$category['slug'])}}" autofocus>{{$category['name']}}</a>   </li>
+                                        @endforeach
                                     </ul>
-                                    @endforeach
+
                                 </li>
                                 @endif
                             @endforeach
@@ -67,7 +69,7 @@
                         <div class="shop-bar pb-60">
                             <div class="shop-found-selector">
                                 @if($categoryDetails[0])
-                                <?php $urlSort = $categoryDetails[0]->slug?>
+                                <?php $urlSort = $categoryDetails[0]->slug; echo $urlSort?>
                                 <form>
                                     <input type="hidden" name="url" id="url" value="{{$urlSort}}">
                                     <div class="shop-selector">

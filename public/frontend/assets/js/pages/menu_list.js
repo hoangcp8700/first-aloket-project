@@ -3,7 +3,6 @@ $('#sort').on('change', function() {
     let valueSort = (this).value;
     let urlSort = document.getElementById('url').value;
     let url = '/danh-muc/' + urlSort;
-
     $.ajax({
         url: url,
         method: 'get',

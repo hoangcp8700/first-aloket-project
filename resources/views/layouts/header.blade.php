@@ -19,11 +19,11 @@
                     <nav>
                         <ul>
                             <li><a href="{{route('page.index')}}">home</a></li>
-                            <li><a href="#">shop</a>
+                            <li><a href="{{route('page.menu_list')}}">shop</a>
                                 <ul class="single-dropdown">
                                     @foreach($sections as $section)
                                     <li>
-                                        <a href="#" class="parent_a_dropdown">{{$section['name']}}</a>
+                                        <a href="{{route('page.menu_list')}}" class="parent_a_dropdown">{{$section['name']}}</a>
                                         @foreach($section['category'] as $category)
                                         <ul class="children-dropdown">
                                             <li><a href="{{route('page.menu_listen',$category['slug'])}}">{{$category['name']}}</a>   </li>

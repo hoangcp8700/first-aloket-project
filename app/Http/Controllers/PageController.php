@@ -87,7 +87,7 @@ class PageController extends Controller
 
     public function menu_list()
     {
-        $categories = Category::where('status',1)->inRandomOrder()->first()->toArray();;
+        $categories = Category::where('status',1)->inRandomOrder()->first()->toArray();
         return redirect()->route('page.menu_listen',$categories['slug']);
     }
 

@@ -48,7 +48,7 @@ class ProductController extends Controller
             return '<span title="'.$row->category->name.'" class="label label-info">'.$row->category->name.'</span>';
         });
         $table->addColumn('price',function($row){
-            return number_format($row->price).' VNĐ';
+            return number_format($row->discount ? $row->discount : $row->price).' VNĐ';
         });
         $table->addColumn('image',function($row){
             $url= asset('/storage/'.$row->image);
