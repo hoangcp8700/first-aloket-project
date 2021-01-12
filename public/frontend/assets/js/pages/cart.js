@@ -1,8 +1,12 @@
 $(document).on('change', '.plusQuantity', function() {
     var quantity = $(this).val();
+    console.log(quantity);
     if (quantity < 1) {
-        alert('Qúa mức tối thiểu');
-        return false;
+        swal({
+            icon: 'warning',
+            title: 'Số lượng tối thiểu là 1'
+        })
+        quantity = 1;
     }
     var cartID = $(this).data('id');
     $.ajax({

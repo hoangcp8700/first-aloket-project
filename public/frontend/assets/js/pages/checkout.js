@@ -87,7 +87,7 @@ $('#applyCoupon').on("submit", function(e) {
 })
 
 $('#checkoutForm').on('submit', function(e) {
-    document.querySelector('#loader').style.display = 'block';
+    document.querySelector('#loader1').style.display = 'block';
     e.preventDefault();
     var data = $(this).serialize();
     $.ajax({
@@ -95,7 +95,7 @@ $('#checkoutForm').on('submit', function(e) {
         url: '/thanh-toan',
         data: data,
         success: function(data) {
-            document.querySelector('#loader').style.display = 'none';
+            document.querySelector('#loader1').style.display = 'none';
             if (data.statuscode == 'success') {
                 swal({
                     icon: data.statuscode,

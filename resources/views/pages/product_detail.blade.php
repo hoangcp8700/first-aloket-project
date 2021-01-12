@@ -123,8 +123,8 @@
                             </div>
                         </div>
                         <div class="quickview-plus-minus">
-                            <div class="cart-plus-minus">
-                                <input type="number" value="1" name="quantity" class="cart-plus-minus-box" id="quantityCart">
+                            <div class="cart-plus-minus" onClick="changeQuantity()">
+                                <input type="text" value="1" name="quantity" class="cart-plus-minus-box" id="quantityCart">
                             </div>
                             <div class="quickview-btn-cart">
                                     <input  type="hidden" name="product_id" id="cartID" value="{{$product['id']}}">
@@ -254,7 +254,7 @@
                     <div class="product-content">
                         <h4><a href="#">{{$lq->name}}</a></h4>
                          <div class="details-price">
-                            <span>{{number_format($product['discount'])}}</span> <span style="font-size:14px">vnđ</span>
+                            <span>{{$lq['discount'] ? number_format($lq['discount']) : number_format($lq['price'])}}</span> <span style="font-size:14px">vnđ</span>
                          </div>
                     </div>
                 </div>

@@ -178,8 +178,8 @@
                                                     <th>#</th>
                                                 </tr>
                                             </thead>
-                                            <tbody >
-                                                <?php use App\Order; $total = 0; $boom = 0;?>
+                                            <tbody>
+                                                <?php use App\Order; $total = 0; $boom = 0; $complete = 0; $no = 0;?>
                                                 @foreach($orders as $order)
                                                 <tr>
                                                     <td> {{date('d-m-Y', strtotime($order['created_at']))}} </td>
@@ -195,19 +195,32 @@
                                                 <?php
                                                     if($order['status'] == 3){
                                                         $boom += $order['discount'];
+                                                    }else if($order['status'] == 1){
+                                                        $complete += $order['discount'];
                                                     }else{
-                                                        $total += $order['discount'];
+                                                        $no += $order['discount'];
                                                     }
+
+                                                    $total += $order['discount'];
+
                                                 ?>
                                                 @endforeach
                                             </tbody>
                                             <tfoot>
                                                 <tr>
                                                     <Td>Tổng hóa đơn:</Td>
-                                                    <td colspan="3"><i>{{number_format($total)}} đ</i></td>
+                                                    <td colspan="3"><i><b>{{number_format($total)}} đ</b></i></td>
                                                 </tr>
                                                 <tr>
-                                                    <Td>Tổng đơn hủy:</Td>
+                                                    <Td>Sắp thanh toán:</Td>
+                                                    <td colspan="3"><i>{{number_format($no)}} đ</i></td>
+                                                </tr>
+                                                <tr>
+                                                    <Td>Đã thanh toán:</Td>
+                                                    <td colspan="3"><i>{{number_format($complete)}} đ</i></td>
+                                                </tr>
+                                                <tr style="color:red">
+                                                    <Td>Đã hủy:</Td>
                                                     <td colspan="3"><i>{{number_format($boom)}} đ</i></td>
                                                 </tr>
                                             </tfoot>

@@ -36,8 +36,8 @@
                             <form method="post">
                                 @csrf
                                 <input id="searchCategory" name="category_id" type="hidden" value="{{$categoryDetails[0]->id ?? ''}}">
-                                <input id="searchProduct" name="search" placeholder="Search Products..." type="text">
-                                <button type="submit"><i class="ti-search"></i></button>
+                                <input id="searchProduct" name="search" placeholder="Tìm kiếm sản phẩm..." type="text">
+                                <button type="button"><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>

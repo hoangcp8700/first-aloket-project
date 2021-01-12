@@ -141,7 +141,14 @@
                             </div>
                             <div class="product-content">
                                 <h4><a href="{{route('page.productDetail',$product->product_code)}}">{{$product->name}}</a></h4>
-                                <span>{{number_format($product->price)}}</span> <span style="font-size:14px">vnđ</span>
+                                <div class="price_product">
+                                    @if($product['discount'])
+                                    <span class="pp-1 ">{{number_format($product->discount)}} <span style="font-size:14px">vnđ</span></span>
+                                    @else
+                                    <span class="pp-1">{{number_format($product->price)}} <span style="font-size:14px">vnđ</span></span>
+                                    @endif
+                                </div>
+
                             </div>
                         </div>
                     </div>

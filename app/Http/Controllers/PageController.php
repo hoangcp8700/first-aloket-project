@@ -122,7 +122,6 @@ class PageController extends Controller
                     }
                 }
                 $products = $products->paginate(6);
-
                 return view('layouts.ajax_product',compact('products','categoryDetails'));
             }
         }else{

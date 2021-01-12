@@ -72,12 +72,13 @@ class ProfileController extends Controller
     public function store(Request $req)
     {
         $rules = [
-            'name' => 'required',
+            'name' => 'required | max: 20',
             'email' => 'required | email'
         ];
 
         $messages = [
             'name.required' => 'Yêu cầu nhập tên đầy đủ',
+            'name.max' => 'Tối đa :max ký tự',
             'phone.numeric' => 'Số điện thoại không hợp lệ',
             'email.required' => 'Yêu cầu nhập địa chỉ email',
             'email.email' => 'Email không hợp lệ',
@@ -96,7 +97,7 @@ class ProfileController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'statucode' => 'error',
+                'statuscode' => 'error',
                 'status' => $validator->messages()->all()[0]
             ]);
         }

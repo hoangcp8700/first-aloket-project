@@ -10,9 +10,9 @@
     <div class="header-top-furniture wrapper-padding-2 res-header-sm">
         <div class="container-fluid">
             <div class="header-bottom-wrapper">
-                <div class="logo-2 furniture-logo ptb-30">
-                    <a href="{{route('page.index')}}">
-                    <img src="{{asset('frontend/assets/img/logo/2.png')}}" alt="">
+                <div class="logo-2 furniture-logo ptb-30 ml-5">
+                    <a href="{{route('page.index')}}"><span>A</span><span>loket</span>
+                    {{-- <img src="{{asset('frontend/assets/img/logo/2.png')}}" alt=""> --}}
                     </a>
                 </div>
                 <div class="menu-style-2 furniture-menu menu-hover">
@@ -84,7 +84,7 @@
                     @else
                     <div class="nav-item dropdown header-user-drop">
 
-                        <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action pl-5">
+                        <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action pl-4">
                             @if(!Auth::user()->image)
                                 <img src="https://dummyimage.com/40x40/d6d6d6/001f5e.png&text=no+image" class="avatar rounded-circle " alt="Avatar" id="loadAvatarHeader">
                             @else
@@ -125,4 +125,4 @@
         </div>
     </div>
 </header>
-<div id="loader"></div>
+<div id="loader" style="display: none"></div>

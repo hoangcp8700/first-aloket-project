@@ -22,7 +22,7 @@
     <div class="checkout-area ptb-100">
         <div class="container">
             <div class="row position-relative">
-                <div id="loader" style="display:none"></div>
+                <div id="loader1" style="display:none "></div>
                 <div class="col-lg-6 col-md-12 col-12">
                     <form method="post" id="checkoutForm">
                         @csrf

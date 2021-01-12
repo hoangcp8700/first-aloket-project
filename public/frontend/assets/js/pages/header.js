@@ -8,7 +8,9 @@ $('#formSearchOrder').on('submit', function(e) {
         data: { search: searchOrder },
         success: function(data) {
 
+
             if (data.statuscode == 'error') {
+                document.querySelector('#loader').style.display = 'none';
                 swal({
                     icon: data.statuscode,
                     title: data.status

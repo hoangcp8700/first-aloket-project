@@ -8989,7 +8989,8 @@ h5.panel-title {
 }
 
 .product-details-small>a.active::before {
-    background: rgba(0, 0, 0, 0.15) none repeat scroll 0 0;
+    /* background: rgba(0, 0, 0, 0.15) none repeat scroll 0 0; */
+    /* background: #fff none repeat scroll 0 0; */
     bottom: 0;
     content: "";
     left: 0;

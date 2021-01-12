@@ -12,6 +12,7 @@ function loadName(name) {
     profile.innerHTML = name;
 }
 
+///////// upload avatar
 function submitUpload(theForm) {
     document.querySelector('#loader').style.display = 'block';
     $.ajax({
@@ -20,21 +21,29 @@ function submitUpload(theForm) {
         data: new FormData($(theForm)[0]),
         contentType: false, // có FormData mới bỏ vào
         processData: false, // có FormData mới bỏ vào
-        success: function(response) {
-            setTimeout(function() {
+        success: function(data) {
+            if (data.statuscode == 'success') {
+                setTimeout(function() {
+                    document.querySelector('#loader').style.display = 'none';
+                    swal({
+                        icon: data.statuscode,
+                        title: data.status
+                    });
+                    window.addEventListener('load', loadAvatar(data.data.image));
+                }, 3000);
+
+            } else {
                 document.querySelector('#loader').style.display = 'none';
                 swal({
                     icon: data.statuscode,
                     title: data.status
                 });
-            }, 3000);
-            if (response.statuscode == 'success') {
-                window.addEventListener('load', loadAvatar(response.data.image));
             }
+
         }
     })
 }
-// change profile
+///////////change profile
 $(document).on('submit', '#formProfile', function(e) {
     document.querySelector('#loader').style.display = 'block';
     e.preventDefault();
@@ -44,15 +53,23 @@ $(document).on('submit', '#formProfile', function(e) {
         url: '/profile/store',
         data: data,
         success: function(data) {
-            setTimeout(function() {
+            console.log(data);
+            if (data.statuscode == 'success') {
+                setTimeout(function() {
+                    document.querySelector('#loader').style.display = 'none';
+                    swal({
+                        icon: data.statuscode,
+                        title: data.status
+                    });
+                    window.addEventListener('load', loadName(data.data.name));
+                }, 2000);
+
+            } else {
                 document.querySelector('#loader').style.display = 'none';
                 swal({
                     icon: data.statuscode,
                     title: data.status
                 });
-            }, 3000);
-            if (data.statuscode == 'success') {
-                window.addEventListener('load', loadName(data.data.name));
             }
         },
         error: function() {

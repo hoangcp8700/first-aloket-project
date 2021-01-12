@@ -3,6 +3,18 @@ function numberFormat(price) {
     return comma;
 }
 
+function changeQuantity() {
+    var quantity = $('#quantityCart').val();
+    quantity = parseInt(quantity);
+    console.log(quantity);
+    if (quantity < 1) {
+        swal({
+            icon: 'warning',
+            title: 'Số lượng tối thiểu là 1'
+        })
+
+    }
+}
 
 
 $('#addTocartForm').on('submit', function(e) {
